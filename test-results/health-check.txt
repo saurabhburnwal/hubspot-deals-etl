@@ -1,0 +1,42 @@
+$ curl -s http://localhost:5200/health
+{
+  "checks": {
+    "database": "healthy"
+  },
+  "service": "hubspot_deals",
+  "status": "healthy",
+  "timestamp": "2026-11-08T13:51:05.101555+00:00",
+  "version": "1.0.0"
+}
+
+HTTP 200
+
+$ curl -s http://localhost:5200/api/health
+{
+    "status": "healthy",
+    "timestamp": "2026-11-08T13:51:05.180881",
+    "service": "hubspot_deals_pipeline_dev",
+    "pipeline": {
+        "pipeline_name": "hubspot_deals_extraction",
+        "destination_type": "postgres",
+        "source_type": "hubspot_deals",
+        "database_health": {
+            "healthy": true,
+            "timestamp": 1794145865.1763892,
+            "database": "hubspot_deals_data_dev",
+            "host": "postgres_dev"
+        },
+        "supports_checkpoints": true
+    }
+}
+
+HTTP 200
+
+$ curl -s -o /dev/null -w "%{http_code}" http://localhost:5200/docs/
+200
+
+$ docker compose ps
+NAME                         STATUS                            PORTS
+hubspot_deals_postgres_dev   Up 3 minutes (healthy)            0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp
+hubspot_deals_redis          Up 3 minutes (healthy)            0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp
+hubspot_deals_service_dev    Up 3 seconds (health: starting)   0.0.0.0:5200->5200/tcp, [::]:5200->5200/tcp

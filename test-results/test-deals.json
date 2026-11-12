@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-11-12T02:44:52.392764+00:00",
+  "stage_ids": {
+    "qualified to buy": "qualifiedtobuy",
+    "presentation scheduled": "presentationscheduled",
+    "contract sent": "contractsent",
+    "closed won": "closedwon",
+    "closed lost": "closedlost",
+    "appointment scheduled": "appointmentscheduled",
+    "decision maker bought-in": "decisionmakerboughtin"
+  },
+  "deals": [
+    {
+      "id": "366685469421",
+      "created_now": true,
+      "dealname": "[DLT TEST] Acme Corp - Starter Plan",
+      "amount": "5000",
+      "dealstage": "qualifiedtobuy",
+      "dealtype": "newbusiness",
+      "hs_priority": "low",
+      "closedate": "2026-12-12T17:00:00.000Z",
+      "description": "Small team evaluating the starter plan. Qualified after discovery call; budget confirmed for Q1."
+    },
+    {
+      "id": "366685469419",
+      "created_now": true,
+      "dealname": "[DLT TEST] Globex - Analytics Add-on",
+      "amount": "25000",
+      "dealstage": "presentationscheduled",
+      "dealtype": "existingbusiness",
+      "hs_priority": "medium",
+      "closedate": "2026-12-27T17:00:00.000Z",
+      "description": "Upsell of the analytics add-on to an existing customer. Product demo scheduled with their data team."
+    },
+    {
+      "id": "366685469420",
+      "created_now": true,
+      "dealname": "[DLT TEST] Initech - Enterprise Migration",
+      "amount": "50000",
+      "dealstage": "closedwon",
+      "dealtype": "newbusiness",
+      "hs_priority": "high",
+      "closedate": "2026-11-02T17:00:00.000Z",
+      "description": "Enterprise migration project signed. 12-month contract with onboarding package."
+    },
+    {
+      "id": "366685469418",
+      "created_now": true,
+      "dealname": "[DLT TEST] Umbrella Health - Data Platform",
+      "amount": "75000",
+      "dealstage": "closedlost",
+      "dealtype": "newbusiness",
+      "hs_priority": "high",
+      "closedate": "2026-10-23T17:00:00.000Z",
+      "closed_lost_reason": "Chose a competitor with an on-premise deployment option.",
+      "description": "Data platform RFP. Lost on deployment model requirements (on-prem only)."
+    },
+    {
+      "id": "366685469417",
+      "created_now": true,
+      "dealname": "[DLT TEST] Stark Industries - Global Rollout",
+      "amount": "100000",
+      "dealstage": "contractsent",
+      "dealtype": "newbusiness",
+      "hs_priority": "high",
+      "closedate": "2027-01-11T17:00:00.000Z",
+      "description": "Global rollout across 14 sites. Contract sent to procurement; legal review in progress."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+ Image hubspot-deals-etl-hubspot_deals_service_dev Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 750B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile.dev
+#2 transferring dockerfile: 808B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.11-slim
+#3 DONE 1.5s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 902B done
+#4 DONE 0.0s
+
+#5 [1/7] FROM docker.io/library/python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 398.20kB 0.0s done
+#6 DONE 0.0s
+
+#7 [3/7] RUN apt-get update && apt-get install -y     gcc     g++     libpq-dev     curl     && rm -rf /var/lib/apt/lists/*
+#7 CACHED
+
+#8 [2/7] WORKDIR /app
+#8 CACHED
+
+#9 [4/7] COPY requirements.txt .
+#9 CACHED
+
+#10 [5/7] RUN pip install --no-cache-dir -r requirements.txt
+#10 CACHED
+
+#11 [6/7] COPY . .
+#11 DONE 0.0s
+
+#12 [7/7] RUN mkdir -p .dlt
+#12 DONE 0.3s
+
+#13 exporting to image
+#13 exporting layers 0.0s done
+#13 preparing layers for inline cache done
+#13 writing image sha256:bdaed96adf992bcc6ce2f510703ce90ca9651a4d984b2ae5c2b567d2283d998f done
+#13 naming to docker.io/library/hubspot-deals-etl-hubspot_deals_service_dev done
+#13 DONE 0.1s
+
+#14 resolving provenance for metadata file
+#14 DONE 0.0s
+ Image hubspot-deals-etl-hubspot_deals_service_dev Built 
+ Network hubspot_deals_network Creating 
+ Volume hubspot_deals_redis_data Creating 
+ Volume hubspot_deals_redis_data Creating 
+ Network hubspot_deals_network Creating 
+ Volume hubspot_deals_dlt_data_dev Creating 
+ Volume hubspot_deals_dlt_data_dev Creating 
+ Volume hubspot_deals_postgres_data_dev Creating 
+ Volume hubspot_deals_postgres_data_dev Creating 
+ Volume hubspot_deals_redis_data Created 
+ Volume hubspot_deals_redis_data Created 
+ Volume hubspot_deals_dlt_data_dev Created 
+ Volume hubspot_deals_dlt_data_dev Created 
+ Volume hubspot_deals_postgres_data_dev Created 
+ Volume hubspot_deals_postgres_data_dev Created 
+ Network hubspot_deals_network Created 
+ Network hubspot_deals_network Created 
+ Container hubspot_deals_redis Creating 
+ Container hubspot_deals_postgres_dev Creating 
+ Container hubspot_deals_redis Created 
+ Container hubspot_deals_postgres_dev Created 
+ Container hubspot_deals_service_dev Creating 
+ Container hubspot_deals_service_dev Created 
+ Container hubspot_deals_postgres_dev Starting 
+ Container hubspot_deals_redis Starting 
+ Container hubspot_deals_postgres_dev Started 
+ Container hubspot_deals_postgres_dev Waiting 
+ Container hubspot_deals_redis Started 
+ Container hubspot_deals_postgres_dev Healthy 
+ Container hubspot_deals_service_dev Starting 
+ Container hubspot_deals_service_dev Started 
+exit=0
