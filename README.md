@@ -18,6 +18,7 @@ Generated with the Glynac **DLT Generator** (`python dlt_generator.py -c hubspot
 | [docs/api-integration.md](docs/api-integration.md) | HubSpot API: auth, deals endpoint, parameters, response, properties, rate limits, errors |
 | [docs/database-schema.md](docs/database-schema.md) | Tables, HubSpot→Postgres type mapping, DDL, indexes, multi-tenant design |
 | [docs/api-documentation.md](docs/api-documentation.md) | This service's REST endpoints with request/response examples |
+| [Swagger UI](#api-documentation-swagger-ui) | Interactive API docs at `/docs/`: how to use them and how they are set up |
 | [docs/hubspot-setup.md](docs/hubspot-setup.md) | Developer account, test account, private app and test deals (Phase 2) |
 | [test-results/](test-results/) | Unit/E2E reports, health checks, DB verification, test deal IDs |
 
@@ -65,6 +66,35 @@ curl -X POST localhost:5200/api/scan/deals-001/pause    # stops at the next page
 curl -X POST localhost:5200/api/scan/deals-001/resume   # continues from the saved cursor
 curl -X POST localhost:5200/api/scan/deals-001/cancel
 ```
+
+---
+
+## API documentation (Swagger UI)
+
+Flask-RESTX generates the interactive docs from the route definitions, so they always match the running code.
+
+| | URL |
+|---|---|
+| **Swagger UI** | http://localhost:5200/docs/ (`/docs` redirects here; stage `:5201`, prod `:5202`) |
+| OpenAPI 2.0 spec (JSON) | http://localhost:5200/api/swagger.json |
+| Written reference with captured responses | [docs/api-documentation.md](docs/api-documentation.md) |
+
+### Using it
+1. Start the stack (`docker compose up -d --build`) and open http://localhost:5200/docs/.
+2. Endpoints are grouped as **scan** (start, status, pause, resume, cancel, list, validate credentials), **results**, **pipeline**, **maintenance** and **default** (health, stats).
+3. Expand an endpoint, click **Try it out**, edit the pre-filled example body, then click **Execute**. Swagger shows the curl command, status code and response. For `POST /scan/start`, replace the example `accessToken` with your HubSpot token and choose a new `scanId`.
+4. **Authorize** is only needed when `SERVICE_API_KEY` is set. Click **Authorize**, paste the key, and Swagger sends it as the `X-API-Key` header on every call. In the default dev setup the key is unset, so skip this step.
+
+To work in Postman instead: **Import → Link →** `http://localhost:5200/api/swagger.json`.
+
+### How it is set up
+| What | Where |
+|---|---|
+| `Api` object: title, version, docs path, `/api` prefix, `X-API-Key` security scheme | `api/routes.py` → `create_api()` |
+| Docs path (`/docs/`) | `config.py` → `API_DOCS_PATH` |
+| Request/response models shown in Swagger (`ScanRequest`, `ScanConfig`, `Filters`, `Auth`, `ValidateCredentialsRequest`, ...) | `api/swagger_schemas.py`, `api/routes.py` |
+| Server-side request validation (Marshmallow) | `api/schemas.py` |
+| Title and version shown in the UI | `APP_TITLE` / `APP_VERSION` in `docker-compose.yml` |
 
 ---
 
